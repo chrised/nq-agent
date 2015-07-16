@@ -1,0 +1,8 @@
+[Unit]
+Description=Run nq-agent
+
+[Service]
+Type=oneshot
+User=nodequery
+Group=nodequery
+ExecStart=/bin/bash /etc/nodequery/nq-agent.sh > /etc/nodequery/nq-cron.log 2>&1

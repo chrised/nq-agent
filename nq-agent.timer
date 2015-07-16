@@ -1,0 +1,9 @@
+[Unit]
+Description=Run nq-agent every three (3) minutes
+
+[Timer]
+OnBootSec=15sec
+OnUnitActiveSec=3min
+
+[Install]
+WantedBy=timers.target

@@ -1,3 +1,5 @@
+Forked for systemd compatibility
+
 NodeQuery Agent
 ===============
 
