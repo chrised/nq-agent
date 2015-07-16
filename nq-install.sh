@@ -165,6 +165,9 @@ then
     else
         wget -nv -O /etc/systemd/system/nq-agent.service https://raw.github.com/$GITHUB_PATH/master/nq-agent.service
         wget -nv -O /etc/systemd/system/nq-agent.timer   https://raw.github.com/$GITHUB_PATH/master/nq-agent.timer
+        systemctl daemon-reload
+        systemctl enable nq-agent.timer
+        systemctl start nq-agent.timer
     fi
 
     # Show success
