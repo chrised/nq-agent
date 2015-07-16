@@ -16,7 +16,7 @@
 
 # Set environment
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-GITHUB_PATH="nodequery/nq-agent"
+GITHUB_PATH="chrised/nq-agent"
 
 # Prepare output
 echo -e "|\n|   NodeQuery Installer\n|   ===================\n|"
@@ -171,10 +171,10 @@ then
     echo -e "|\n|   Success: The NodeQuery agent has been installed\n|"
 
     # Attempt to delete installation script
-    #if [ -f $0 ]
-    #then
-    #    rm -f $0
-    #fi
+    if [ -f $0 ]
+    then
+        rm -f $0
+    fi
 else
     # Show error
     echo -e "|\n|   Error: The NodeQuery agent could not be installed\n|"
