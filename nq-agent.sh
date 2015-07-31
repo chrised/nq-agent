@@ -143,8 +143,14 @@ swap_free=$(prep $(num "$(cat /proc/meminfo | grep ^SwapFree: | awk '{ print $2 
 swap_usage=$((($swap_total-$swap_free)*1024))
 swap_total=$(($swap_total*1024))
 
+if [ -f /sbin/zfs ]; then
+    zfs_info="
+$(sudo /sbin/zfs list -Hp | grep -v '/' | awk '{ print $1" "$3+$2" "$2 }' | sort | uniq)"
+fi
+
 # Disk usage
-disk_info="$(df -P -B 1 | grep '^/' | awk '{ print $1" "$2" "$3 }' | sort | uniq)"
+#disk_info="$(df -P -B 1 | grep '^/' | awk '{ print $1" "$2" "$3 }' | sort | uniq)"
+disk_info=$(echo "$(df -P -B 1 | grep '^/' | awk '{ print $1" "$2" "$3 }' | sort | uniq)$zfs_info")
 disk_total=$(prep $(num "$(($(echo "$disk_info" | awk '{ print $2 }' | sed -e :a -e '$!N;s/\n/+/;ta')))"))
 disk_usage=$(prep $(num "$(($(echo "$disk_info" | awk '{ print $3 }' | sed -e :a -e '$!N;s/\n/+/;ta')))"))
 

@@ -182,3 +182,8 @@ else
     # Show error
     echo -e "|\n|   Error: The NodeQuery agent could not be installed\n|"
 fi
+
+echo "Add the following to sudoers if you have the zfs binary installed."
+echo
+echo "Cmnd_Alias ZFS_LIST = /sbin/zfs list *"
+echo "nodequery ALL= (root) NOPASSWD: ZFS_LIST"

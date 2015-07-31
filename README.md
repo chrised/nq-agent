@@ -10,6 +10,14 @@ are listed below.
 Feel free to contact us for support should you have problems installing
 the agent on your server.
 
+ZFS Support
+-----------
+Add the following to sudoers:
+
+    Cmnd_Alias ZFS_LIST = /sbin/zfs list *
+    nodequery ALL= (root) NOPASSWD: ZFS_LIST
+
+
 Requirements
 ------------
 
